@@ -10,7 +10,7 @@
 
 namespace DynamicProgramming
 {
-
-    void run(std::vector<std::array<int, 3>> &boxes);
+    using Boxes = std::vector<std::array<int, 3>>;
+    void run(Boxes &boxes);
 
 };

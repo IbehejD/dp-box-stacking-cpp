@@ -7,23 +7,24 @@
 
 namespace DynamicProgramming
 {
-    void run(std::vector<std::array<int, 3>> &boxes)
+    void sort_boxes(Boxes &boxes)
     {
-        // initializing vectors
-        std::vector<int> values(boxes.size());     // vector of current height values
-        std::vector<int> parent(boxes.size(), -1); // vector of indexes pointing to previous box
-        std::vector<int> result;                   // vector for storing sequence of boxes
-
         // Sort the array by the first element
         std::sort(boxes.begin(), boxes.end(), [](const std::array<int, 3> &a, const std::array<int, 3> &b)
                   { return a[0] < b[0]; });
+    }
 
-        // initialize values with height of each box
+    void init_heights(Boxes &boxes, std::vector<int> &values)
+    {
+
         for (size_t i = 0; i < boxes.size(); ++i)
         {
             values[i] = boxes[i][2];
         }
+    }
 
+    void search_order(Boxes &boxes, std::vector<int> &values, std::vector<int> &parent)
+    {
         // condition for valid placing
         auto is_base_smaller = [boxes](int i, int j)
         {
@@ -50,22 +51,44 @@ namespace DynamicProgramming
             }
             values[i] = max; // setting the best value to box
         }
+    }
 
-        // Find the index of the maximum value in values
-        int index = std::distance(values.begin(), std::max_element(values.begin(), values.end())); // finding index of bigest value box
+    int find_max_index(std::vector<int> &values)
+    {
+        return std::distance(values.begin(), std::max_element(values.begin(), values.end())); // finding index of bigest value box
+    }
 
+    void extract_solution(std::vector<int> &result, std::vector<int> &parent, int index)
+    {
         // reverse box sequence searching
         while (index > 0) // while any other predecessor exists
         {
             result.push_back(index);
             index = parent[index];
         }
+    }
 
-        // printing result
+    void print_result(std::vector<int> &result, Boxes &boxes)
+    {
         for (const auto &idx : result)
         {
             std::cout << "{" << boxes[idx][0] << ", " << boxes[idx][1] << ", " << boxes[idx][2] << "} ";
         }
         std::cout << std::endl;
+    }
+
+    void run(Boxes &boxes)
+    {
+        // initializing vectors
+        std::vector<int> values(boxes.size());     // vector of current height values
+        std::vector<int> parent(boxes.size(), -1); // vector of indexes pointing to previous box
+        std::vector<int> result;
+
+        sort_boxes(boxes);                       // vector for storing sequence of boxes
+        init_heights(boxes, values);             // initialize values with height of each box
+        search_order(boxes, values, parent);     // search for solution
+        int index = find_max_index(values);      // Find the index of the maximum value in values
+        extract_solution(result, parent, index); // extract solution from values
+        print_result(result, boxes);             // printing result
     }
 }
