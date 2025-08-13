@@ -9,7 +9,9 @@ int main() {
   dp::Boxes boxes = {
       {{4, 5, 3}, {1, 5, 4}, {2, 3, 2}, {2, 4, 1}, {3, 6, 2}, {1, 2, 2}}
   };
-  dp::run(boxes);
+  dp::DynamicProgramming dypo;
+  dypo.setBoxes(boxes);
+  dypo.run();
 
   return 0;
 }

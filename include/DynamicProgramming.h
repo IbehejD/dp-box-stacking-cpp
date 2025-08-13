@@ -11,7 +11,26 @@
 #include "structs/Box.h"
 
 namespace dp {
-  using Boxes = std::vector<std::array<int, 3>>;
-  void run(Boxes &boxes);
+
+  using Boxes = std::vector<Box>;
+
+  class DynamicProgramming {
+   public:
+    void setBoxes(Boxes &boxes);
+
+    void run();
+
+   private:
+    Boxes _boxes;
+    std::vector<int> _values;
+    std::vector<int> _parents;
+
+    void sort_boxes();
+    void init_heights();
+    void search_order();
+    int find_max_index();
+    void extract_solution(std::vector<int> &result, int index);
+    void print_result(std::vector<int> &result);
+  };
 
 };  // namespace dp

@@ -21,11 +21,11 @@ set(CMAKE_CXX_FLAGS_DEBUG "-g -O0 -Wall -Wextra -Wpedantic")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG")
 
 # Include directories
-include_directories(include)
+include_directories(include src)
 
 # Source files
 file(GLOB_RECURSE SOURCES "src/*.cpp")
-file(GLOB_RECURSE HEADERS "include/*.h" "include/*.hpp")
+file(GLOB_RECURSE HEADERS "include/*.h" "include/*.hpp" "src/*.h" "src/*.hpp")
 
 # Create executable
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
