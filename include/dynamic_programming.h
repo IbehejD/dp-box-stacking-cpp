@@ -8,8 +8,10 @@
 #include <array>
 #include <iostream>
 
-namespace DynamicProgramming {
+#include "structs/Box.h"
+
+namespace dp {
   using Boxes = std::vector<std::array<int, 3>>;
   void run(Boxes &boxes);
 
-};  // namespace DynamicProgramming
+};  // namespace dp

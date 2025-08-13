@@ -7,7 +7,7 @@
 
 #include "structs/Box.h"
 
-namespace DynamicProgramming {
+namespace dp {
 
   void sort_boxes(Boxes &boxes) {
     // Sort the array by the first element
@@ -100,4 +100,4 @@ namespace DynamicProgramming {
     extract_solution(result, parent, index);  // extract solution from values
     print_result(result, boxes);              // printing result
   }
-}  // namespace DynamicProgramming
+}  // namespace dp
