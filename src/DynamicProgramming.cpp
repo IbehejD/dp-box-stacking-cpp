@@ -3,7 +3,7 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-#include "dynamic_programming.h"
+#include "DynamicProgramming.h"
 
 #include "structs/Box.h"
 
