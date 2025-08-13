@@ -5,12 +5,11 @@
 
 #pragma once
 
-#include <iostream>
 #include <array>
+#include <iostream>
 
-namespace DynamicProgramming
-{
-    using Boxes = std::vector<std::array<int, 3>>;
-    void run(Boxes &boxes);
+namespace DynamicProgramming {
+  using Boxes = std::vector<std::array<int, 3>>;
+  void run(Boxes &boxes);
 
-};
+};  // namespace DynamicProgramming
