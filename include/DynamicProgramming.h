@@ -16,7 +16,7 @@ namespace dp {
 
   class DynamicProgramming {
    public:
-    void setBoxes(Boxes &boxes);
+    void setBoxes(const Boxes &boxes);
 
     void run();
 
@@ -28,9 +28,9 @@ namespace dp {
     void sort_boxes();
     void init_heights();
     void search_order();
-    int find_max_index();
-    void extract_solution(std::vector<int> &result, int index);
-    void print_result(std::vector<int> &result);
+    int find_max_index() const;
+    void extract_solution(std::vector<int> &result, int index) const;
+    void print_result(const std::vector<int> &result) const;
   };
 
 };  // namespace dp

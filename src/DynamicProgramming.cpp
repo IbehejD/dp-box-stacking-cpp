@@ -9,9 +9,9 @@
 
 namespace dp {
 
-  void DynamicProgramming::setBoxes(Boxes &boxes) {
+  void DynamicProgramming::setBoxes(const Boxes &boxes) {
     _boxes = boxes;
-    _parents.reserve(boxes.size());
+    _parents.reserve(boxes.size() - 1);
   }
 
   void DynamicProgramming::sort_boxes() {
@@ -61,7 +61,7 @@ namespace dp {
     }
   }
 
-  int DynamicProgramming::find_max_index() {
+  int DynamicProgramming::find_max_index() const {
     return std::distance(
         _values.begin(), std::max_element(_values.begin(), _values.end())
     );  // finding index of bigest value box
@@ -69,7 +69,7 @@ namespace dp {
 
   void DynamicProgramming::extract_solution(
       std::vector<int> &result, int index
-  ) {
+  ) const {
     // reverse box sequence searching
     while (index > 0)  // while any other predecessor exists
     {
@@ -78,7 +78,7 @@ namespace dp {
     }
   }
 
-  void DynamicProgramming::print_result(std::vector<int> &result) {
+  void DynamicProgramming::print_result(const std::vector<int> &result) const {
     for (const auto &idx : result) {
       std::cout << "{" << _boxes[idx].getWidth() << ", "
                 << _boxes[idx].getLength() << ", " << _boxes[idx].getHeigth()
