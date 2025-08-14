@@ -9,7 +9,7 @@
 #include <iostream>
 #include <vector>
 
-#include "structs/Box.h"
+#include "dp/structs/Box.h"
 
 namespace dp {
 

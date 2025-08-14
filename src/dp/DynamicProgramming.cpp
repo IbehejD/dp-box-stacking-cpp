@@ -2,7 +2,7 @@
 //
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
-#include "DynamicProgramming.h"
+#include "dp/DynamicProgramming.h"
 
 #include <algorithm>
 

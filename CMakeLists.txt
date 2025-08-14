@@ -6,6 +6,8 @@
 cmake_minimum_required(VERSION 3.20)
 project(DynamicProgramming VERSION 1.0.0 LANGUAGES CXX)
 
+
+
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -20,15 +22,14 @@ endif()
 set(CMAKE_CXX_FLAGS_DEBUG "-g -O0 -Wall -Wextra -Wpedantic")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG")
 
-# Include directories
-include_directories(include src)
+
 
 # Source files
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 file(GLOB_RECURSE HEADERS "include/*.h" "include/*.hpp" "src/*.h" "src/*.hpp")
 
-# Create executable
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+add_executable(${PROJECT_NAME} src/main.cpp ${SOURCES})
+target_include_directories(${PROJECT_NAME} PUBLIC include src)
 
 # Set output directory
 set_target_properties(${PROJECT_NAME} PROPERTIES
@@ -36,11 +37,11 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 )
 
 # Add tests if enabled
-# option(BUILD_TESTS "Build tests" ON)
-# if(BUILD_TESTS)
-#     enable_testing()
-#     add_subdirectory(tests)
-# endif()
+option(BUILD_TESTS "Build tests" ON)
+if(BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(test)
+endif()
 
 # Installation
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
