@@ -88,13 +88,6 @@ namespace dp {
   }
 
   void DynamicProgramming::run() {
-    // initializing vectors
-    std::vector<int> _values(
-        _boxes.size()
-    );  // vector of current height _values
-    std::vector<int> _parents(
-        _boxes.size(), -1
-    );  // vector of indexes pointing to previous box
     std::vector<int> result;
 
     sort_boxes();    // vector for storing sequence of _boxes
