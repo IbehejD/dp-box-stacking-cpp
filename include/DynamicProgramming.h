@@ -7,6 +7,7 @@
 
 #include <array>
 #include <iostream>
+#include <vector>
 
 #include "structs/Box.h"
 
